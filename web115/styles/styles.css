@@ -1,4 +1,4 @@
-/* ===== Basic Reset ===== */
+
 
 * {
     box-sizing: border-box;
@@ -6,16 +6,16 @@
     padding: 0;
 }
 
-/* ===== Page Basics ===== */
+
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #f2f4f3;   /* soft gray, not pure white */
-    color: #2e2e2e;              /* dark gray, not black */
+    background-color: #f2f4f3;   
+    color: #2e2e2e;              
     line-height: 1.6;
 }
 
-/* ===== Layout ===== */
+
 
 header,
 main,
@@ -25,10 +25,10 @@ footer {
     padding: 1.5rem;
 }
 
-/* ===== Header ===== */
+
 
 header {
-    background-color: #1f4d3a;   /* dark green */
+    background-color: #1f4d3a;   
     color: #ffffff;
 }
 
@@ -47,7 +47,7 @@ header nav a:hover {
     text-decoration: underline;
 }
 
-/* ===== Main Content ===== */
+
 
 main {
     background-color: #ffffff;
@@ -63,7 +63,7 @@ main p {
     margin-bottom: 1rem;
 }
 
-/* ===== Lists ===== */
+
 
 ul {
     margin-left: 1.5rem;
@@ -79,7 +79,7 @@ li {
     margin-bottom: 0.75rem;
 }
 
-/* ===== Image Styling ===== */
+
 
 figure {
     margin: 1.5rem 0;
@@ -98,10 +98,10 @@ figcaption {
     margin-top: 0.5rem;
 }
 
-/* ===== Footer ===== */
+
 
 footer {
-    background-color: #ffffff;   /* same as main */
+    background-color: #ffffff;   
     text-align: center;
     font-size: 0.9rem;
     border-top: 1px solid #d9d9d9;
@@ -125,7 +125,6 @@ footer p {
     margin-bottom: 0.4rem;
 }
 
-/* ===== Global Links ===== */
 
 a {
     color: #1f4d3a;
