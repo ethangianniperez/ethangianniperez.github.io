@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan Perez's Enthusiastic Penguin — WEB115 — Home</title>
+    <script src="scripts/HTMLInclude.js" defer></script>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div data-include="components/header.html"></div>
+
+        <main>
+            <h2>FizzBuzz 1 - Rocket Launch Theme</h2>
+
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" placeholder="Enter your first name">
+                </div>
+                <div class="input-group">
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" id="middleName" placeholder="Enter your middle name">
+                </div>
+                <div class="input-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" placeholder="Enter your last name">
+                </div>
+                <button class="btn" onclick="generateFizzBuzz()">Launch FizzBuzz!</button>
+            </div>
+
+            <div id="greeting"></div>
+
+            <div id="output" style="display: none;">
+                <ol id="fizzbuzzList"></ol>
+            </div>
+        </main>
+
+        <footer>
+            <p>Designed by <a href="https://github.com/yourusername" target="_blank">Your Name</a> &copy; 2025</p>
+            <p><a href="https://www.cpcc.edu/" target="_blank">Central Piedmont Community College</a></p>
+        </footer>
+    </div>
+
+    <script>
+        // Configuration object for easy customization
+        const config = {
+            maxNumber: 140,
+            divisor1: 3,
+            divisor2: 5,
+            word1: "IGNITION",      // Word for multiples of 3
+            word2: "LIFTOFF",       // Word for multiples of 5
+            defaultWord: "countdown" // Default word
+        };
+
+        function generateFizzBuzz() {
+            // Get user input
+            const firstName = document.getElementById('firstName').value.trim();
+            const middleName = document.getElementById('middleName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+
+            // Validate input
+            if (!firstName || !middleName || !lastName) {
+                alert('Please enter your first, middle, and last name!');
+                return;
+            }
+
+            // Display greeting
+            const greeting = document.getElementById('greeting');
+            greeting.textContent = `Welcome to FizzBuzz, ${firstName} ${middleName} ${lastName}!`;
+
+            // Generate FizzBuzz list
+            const outputDiv = document.getElementById('output');
+            const list = document.getElementById('fizzbuzzList');
+            list.innerHTML = ''; // Clear previous content
+
+            // FizzBuzz logic
+            for (let i = 1; i <= config.maxNumber; i++) {
+                const listItem = document.createElement('li');
+                let text = '';
+                let className = '';
+
+                // Check divisibility
+                const divisibleBy3 = i % config.divisor1 === 0;
+                const divisibleBy5 = i % config.divisor2 === 0;
+
+                if (divisibleBy3 && divisibleBy5) {
+                    text = `${config.word1}! ${config.word2}!`;
+                    className = 'fizzbuzz';
+                } else if (divisibleBy3) {
+                    text = `${config.word1}!`;
+                    className = 'fizz';
+                } else if (divisibleBy5) {
+                    text = `${config.word2}!`;
+                    className = 'buzz';
+                } else {
+                    text = config.defaultWord;
+                }
+
+                listItem.textContent = text;
+                listItem.className = className;
+                list.appendChild(listItem);
+            }
+
+            // Show output
+            outputDiv.style.display = 'block';
+
+            // Smooth scroll to output
+            outputDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Allow Enter key to submit
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="text"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        generateFizzBuzz();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
