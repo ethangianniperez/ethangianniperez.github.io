@@ -6,21 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Roboto&display=swap" rel="stylesheet">
-
+    <script src="scripts/HTMLInclude.js" defer></script>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
 
 <header>
-    
-    <h1>Ethan Perez’s Enthusiastic Penguin — WEB115</h1>
-    <nav>
-        <a href="index.html">Home</a> |
-        <a href="introduction.html">Introduction</a> |
-        <a href="contract.html">Contract</a> |
-        <a href="brand.html">Brand</a>
-    </nav>
+    <div data-include="components/header.html"></div>
     <p class="tagline">“Built on Trust. Driven by Quality.”</p>
 </header>
 
@@ -61,15 +54,7 @@
 </main>
 
 <footer>
-    <nav>
-            <a href="https://github.com/ethangianniperez" target="_blank">GitHub</a> |
-            <a href="https://www.freecodecamp.org/ethangianniperez" target="_blank">freeCodeCamp</a> |
-            <a href="https://www.codecademy.com/ethangianniperez" target="_blank">Codecademy</a> |
-            <a href="https://jsfiddle.net/u/eperez39/fiddles/" target="_blank">JSFiddle</a> |
-            <a href="https://www.linkedin.com/ethan-perez-8854b637a" target="_blank">LinkedIn</a>
-    </nav>
-    <p>&copy; 2026 Empire State Auto Repair</p>
-    <p>Page built by Ethan Perez.</p>
+    <div data-include="components/footer.html"></div>
 </footer>
 
 <script src="https://lint.page/kit/880bd5.js" crossorigin="anonymous"></script>
