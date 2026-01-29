@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="images/logo(1).png" type="image/png" />
-    <title>Jordan Perez's Jolly Penguin | WEB115 | FizzBuzz 0</title>
+    <title>Ethan Perez's Enthusiastic Penguin | WEB115 | FizzBuzz 0</title>
     <script
-      src="https://lint.page/kit/67ff88.js"
+      src="https://lint.page/kit/880bd5.js"
       crossorigin="anonymous"
     ></script>
     <script src="scripts/HTMLInclude.js" defer></script>
@@ -19,7 +19,7 @@
     <main>
       <h2>FizzBuzz 0</h2>
 
-      <h3 id="greeting">Welcome to Jordan's Portfolio!</h3>
+      <h3 id="greeting">Welcome to Ethan's Enthusiastic Penguin!</h3>
 
       <form id="nameForm">
         <div class="fb-input">
@@ -28,21 +28,21 @@
             required
             type="text"
             id="first_name"
-            placeholder="e.g., John"
+            placeholder="Enter your first name"
           />
         </div>
         <div class="fb-input">
-          <label for="middle_initial">Middle Initial:</label>
+          <label for="middle_initial">Middle Initial (Optional):</label>
           <input
             type="text"
             id="middle_initial"
             maxlength="1"
-            placeholder="e.g., A"
+            placeholder="M"
           />
         </div>
         <div class="fb-input">
           <label for="last_name">Last Name:</label>
-          <input type="text" id="last_name" placeholder="e.g., Smith" />
+          <input type="text" id="last_name" placeholder="Enter your last name" />
         </div>
         <button type="submit" id="fb-submit">Submit</button>
       </form>
@@ -65,6 +65,13 @@
           let middle = document.getElementById("middle_initial").value.trim();
           let last = document.getElementById("last_name").value.trim();
 
+          // Validate first name is provided
+          if (first === "") {
+            alert("First name is required. Please enter your first name.");
+            return;
+          }
+
+          // Construct full name
           let fullName = first;
           if (middle !== "") {
             fullName += " " + middle + ".";
@@ -73,23 +80,34 @@
             fullName += " " + last;
           }
 
+          // Update greeting
           let greeting = document.getElementById("greeting");
-          greeting.textContent = `Welcome to Jordan's Portfolio, ${fullName}!`;
+          greeting.textContent = `Welcome to Ethan's Enthusiastic Penguin, ${fullName}!`;
 
+          // Prompt for count limit
           let count = prompt(`How high do you want to count, ${first}?`);
-          count = parseInt(count);
 
-          if (isNaN(count) || count <= 0) {
-            alert("Invalid number — please reload and enter a valid value.");
+          // Validate count input
+          if (count === null || count.trim() === "") {
+            alert("No number entered. Please reload and enter a valid value.");
             return;
           }
 
+          count = parseInt(count);
+
+          if (isNaN(count) || count <= 0) {
+            alert("Invalid number. Please reload and enter a valid positive number.");
+            return;
+          }
+
+          // Generate output
           let outputDiv = document.getElementById("output");
           outputDiv.innerHTML = "";
 
           let list = document.createElement("ol");
 
-          let themeWords = "Jolly Molly";
+          // Theme words - replace with your own theme
+          let themeWords = "Enthusiastic Penguin";
 
           for (let i = 1; i <= count; i++) {
             let li = document.createElement("li");
