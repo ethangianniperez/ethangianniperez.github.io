@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FizzBuzz 2 - Enhanced Version</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div>
+        <h1>FizzBuzz 2</h1>
+        <p>Enhanced Modular Version</p>
+
+        <div>
+            <p><strong>New Features:</strong></p>
+            <p>✓ Modular division check function</p>
+            <p>✓ Customizable divisor variables</p>
+            <p>✓ Improved code structure</p>
+        </div>
+
+        <div>
+            <div>
+                <label for="firstDivisor">First Divisor (Fizz):</label>
+                <input type="number" id="firstDivisor" value="3" min="1">
+            </div>
+            <div>
+                <label for="secondDivisor">Second Divisor (Buzz):</label>
+                <input type="number" id="secondDivisor" value="5" min="1">
+            </div>
+            <div>
+                <label for="maxNumber">Count to:</label>
+                <input type="number" id="maxNumber" value="100" min="1" max="1000">
+            </div>
+            <button onclick="runFizzBuzz()">Generate FizzBuzz</button>
+        </div>
+
+        <div id="output"></div>
+
+        <footer>
+            <p>WEB115 - FizzBuzz 2 Lab</p>
+        </footer>
+    </div>
+
+    <script>
+
+        function checkDivision(dividend, divisor) {
+            return dividend % divisor === 0;
+        }
+
+
+        function runFizzBuzz() {
+
+            const firstDivisor = parseInt(document.getElementById('firstDivisor').value);
+            const secondDivisor = parseInt(document.getElementById('secondDivisor').value);
+            const maxNumber = parseInt(document.getElementById('maxNumber').value);
+
+
+            if (firstDivisor < 1 || secondDivisor < 1 || maxNumber < 1) {
+                alert('Please enter positive numbers for all fields.');
+                return;
+            }
+
+            if (maxNumber > 1000) {
+                alert('Maximum count is 1000. Please enter a smaller number.');
+                return;
+            }
+
+
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = '';
+
+
+            for (let iCounter = 1; iCounter <= maxNumber; iCounter++) {
+                const div = document.createElement('div');
+
+
+                const divisibleByFirst = checkDivision(iCounter, firstDivisor);
+                const divisibleBySecond = checkDivision(iCounter, secondDivisor);
+
+                if (divisibleByFirst && divisibleBySecond) {
+                    div.textContent = 'FizzBuzz';
+                } else if (divisibleByFirst) {
+                    div.textContent = 'Fizz';
+                } else if (divisibleBySecond) {
+                    div.textContent = 'Buzz';
+                } else {
+                    div.textContent = iCounter;
+                }
+
+                outputDiv.appendChild(div);
+            }
+        }
+
+
+        window.onload = function() {
+            runFizzBuzz();
+        };
+    </script>
+</body>
+</html>
