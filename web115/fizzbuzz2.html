@@ -3,60 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan Perez's Enthusiastic Penguin — WEB115 — FizzBuzz 2</title>
     <script src="scripts/HTMLInclude.js" defer></script>
-    <title>Ethan Perez's Enthusiastic Penguin | Web 115 | Fizzbuzz 2</title>
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <div data-include="components/header.html"></div>
-    <div>
-        <h1>FizzBuzz 2</h1>
-        <p>Enhanced Modular Version</p>
+    <div class="container">
+        
+        <div data-include="components/header.html"></div>
 
-        <div>
-            <p><strong>New Features:</strong></p>
-            <p>✓ Modular division check function</p>
-            <p>✓ Customizable divisor variables</p>
-            <p>✓ Improved code structure</p>
-        </div>
+        <main>
+            <h2>FizzBuzz 2 - Enhanced Modular Version</h2>
 
-        <div>
             <div>
-                <label for="firstDivisor">First Divisor (Fizz):</label>
-                <input type="number" id="firstDivisor" value="3" min="1">
+                <p><strong>New Features:</strong></p>
+                <p>✓ Modular division check function</p>
+                <p>✓ Customizable divisor variables</p>
+                <p>✓ Improved code structure</p>
             </div>
-            <div>
-                <label for="secondDivisor">Second Divisor (Buzz):</label>
-                <input type="number" id="secondDivisor" value="5" min="1">
-            </div>
-            <div>
-                <label for="maxNumber">Count to:</label>
-                <input type="number" id="maxNumber" value="100" min="1" max="1000">
-            </div>
-            <button onclick="runFizzBuzz()">Generate FizzBuzz</button>
-        </div>
 
-        <div id="output"></div>
+            <div>
+                <div>
+                    <label for="firstDivisor">First Divisor (Fizz):</label>
+                    <input type="number" id="firstDivisor" value="3" min="1">
+                </div>
+                <div>
+                    <label for="secondDivisor">Second Divisor (Buzz):</label>
+                    <input type="number" id="secondDivisor" value="5" min="1">
+                </div>
+                <div>
+                    <label for="maxNumber">Count to:</label>
+                    <input type="number" id="maxNumber" value="100" min="1" max="1000">
+                </div>
+                <button onclick="runFizzBuzz()">Generate FizzBuzz</button>
+            </div>
 
-        <footer>
-            <p>WEB115 - FizzBuzz 2 Lab</p>
-        </footer>
+            <div id="output"></div>
+        </main>
+
+        
     </div>
+    
+    <div data-include="components/footer.html"></div>
 
     <script>
-
+        /**
+         * Checks if the first number is evenly divisible by the second number
+         * @param {number} dividend - The number to be divided
+         * @param {number} divisor - The number to divide by
+         * @returns {boolean} - True if evenly divisible, false otherwise
+         */
         function checkDivision(dividend, divisor) {
             return dividend % divisor === 0;
         }
 
-
+        /**
+         * Runs the FizzBuzz algorithm with customizable divisors
+         */
         function runFizzBuzz() {
-
+            // Get divisor values from input fields
             const firstDivisor = parseInt(document.getElementById('firstDivisor').value);
             const secondDivisor = parseInt(document.getElementById('secondDivisor').value);
             const maxNumber = parseInt(document.getElementById('maxNumber').value);
 
-
+            // Validate inputs
             if (firstDivisor < 1 || secondDivisor < 1 || maxNumber < 1) {
                 alert('Please enter positive numbers for all fields.');
                 return;
@@ -67,15 +77,15 @@
                 return;
             }
 
-
+            // Clear previous output
             const outputDiv = document.getElementById('output');
             outputDiv.innerHTML = '';
 
-
+            // Generate FizzBuzz sequence
             for (let iCounter = 1; iCounter <= maxNumber; iCounter++) {
                 const div = document.createElement('div');
 
-
+                // Check divisibility using our modular function
                 const divisibleByFirst = checkDivision(iCounter, firstDivisor);
                 const divisibleBySecond = checkDivision(iCounter, secondDivisor);
 
@@ -93,11 +103,10 @@
             }
         }
 
-
+        // Run FizzBuzz on page load with default values
         window.onload = function() {
             runFizzBuzz();
         };
     </script>
-    <div data-include="components/footer.html"></div>
 </body>
 </html>
