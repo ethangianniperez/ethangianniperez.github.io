@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethan Perez's Enthusiastic Penguin — WEB115 — FizzBuzz 4</title>
+    <script src="scripts/HTMLInclude.js" defer></script>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <div class="container">
+        
+        <div data-include="components/header.html"></div>
+
+        <main>
+            <h2>FizzBuzz 4 - Custom Divisibility Engine</h2>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">
+                Customize all three divisors, their output words, and the default value!
+            </p>
+
+            <div>
+                <div>
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" placeholder="Enter your first name">
+                </div>
+                <div>
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" id="middleName" placeholder="Enter your middle name">
+                </div>
+                <div>
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" placeholder="Enter your last name">
+                </div>
+                
+                <h3 style="margin-top: 25px; color: #667eea;">Rule Configuration</h3>
+                
+                <div>
+                    <label for="firstDivisor">First Divisor - Default 3:</label>
+                    <input type="number" id="firstDivisor" value="3" min="1">
+                </div>
+                <div>
+                    <label for="firstWord">First Word (one word only) - Default "Exploration":</label>
+                    <input type="text" id="firstWord" value="Exploration" placeholder="Enter one word">
+                </div>
+                
+                <div>
+                    <label for="secondDivisor">Second Divisor - Default 5:</label>
+                    <input type="number" id="secondDivisor" value="5" min="1">
+                </div>
+                <div>
+                    <label for="secondWord">Second Word (one word only) - Default "Level-Up":</label>
+                    <input type="text" id="secondWord" value="Level-Up" placeholder="Enter one word">
+                </div>
+                
+                <div>
+                    <label for="thirdDivisor">Third Divisor - Default 7:</label>
+                    <input type="number" id="thirdDivisor" value="7" min="1">
+                </div>
+                <div>
+                    <label for="thirdWord">Third Word (one word only) - Default "BANG!":</label>
+                    <input type="text" id="thirdWord" value="BANG!" placeholder="Enter one word">
+                </div>
+                
+                <div>
+                    <label for="defaultValue">Default Value (leave blank for nothing):</label>
+                    <input type="text" id="defaultValue" value="" placeholder="Leave blank to show nothing">
+                </div>
+                
+                <div>
+                    <label for="maxNumber">Count to (max 1000) - Default 125:</label>
+                    <input type="number" id="maxNumber" value="125" min="1" max="1000">
+                </div>
+                
+                <button onclick="runFizzBuzz()">Generate FizzBuzz!</button>
+            </div>
+
+            <div id="greeting"></div>
+
+            <div id="output" style="display: none;">
+                <ol id="fizzbuzzList"></ol>
+            </div>
+        </main>
+
+        
+    </div>
+    
+    <div data-include="components/footer.html"></div>
+
+    <script>
+        /**
+         * Checks if the first number is evenly divisible by the second number
+         * @param {number} dividend - The number to be divided
+         * @param {number} divisor - The number to divide by
+         * @returns {boolean} - True if evenly divisible, false otherwise
+         */
+        function checkDivision(dividend, divisor) {
+            return dividend % divisor === 0;
+        }
+
+        /**
+         * Runs the customizable FizzBuzz algorithm
+         * Allows user to specify divisors, output words, and default value
+         * Uses a dynamic approach that builds the output string based on divisibility
+         */
+        function runFizzBuzz() {
+            // Get user input
+            const firstName = document.getElementById('firstName').value.trim();
+            const middleName = document.getElementById('middleName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+
+            // Validate name input
+            if (!firstName || !middleName || !lastName) {
+                alert('Please enter your first, middle, and last name!');
+                return;
+            }
+
+            // Get divisor values and words from input fields
+            const firstDivisor = parseInt(document.getElementById('firstDivisor').value);
+            const firstWord = document.getElementById('firstWord').value.trim();
+            
+            const secondDivisor = parseInt(document.getElementById('secondDivisor').value);
+            const secondWord = document.getElementById('secondWord').value.trim();
+            
+            const thirdDivisor = parseInt(document.getElementById('thirdDivisor').value);
+            const thirdWord = document.getElementById('thirdWord').value.trim();
+            
+            const defaultValue = document.getElementById('defaultValue').value.trim();
+            const maxNumber = parseInt(document.getElementById('maxNumber').value);
+
+            // Validate divisor inputs
+            if (firstDivisor < 1 || secondDivisor < 1 || thirdDivisor < 1 || maxNumber < 1) {
+                alert('Please enter positive numbers for all divisor fields.');
+                return;
+            }
+
+            if (maxNumber > 1000) {
+                alert('Maximum count is 1000. Please enter a smaller number.');
+                return;
+            }
+
+            // Validate that words are single words (no spaces)
+            if (!firstWord || !secondWord || !thirdWord) {
+                alert('Please enter a word for each divisor output.');
+                return;
+            }
+
+            if (firstWord.includes(' ') || secondWord.includes(' ') || thirdWord.includes(' ')) {
+                alert('Please use only ONE word per output field (no spaces allowed).');
+                return;
+            }
+
+            // Display greeting
+            const greeting = document.getElementById('greeting');
+            greeting.textContent = `Welcome to Custom FizzBuzz, ${firstName} ${middleName} ${lastName}!`;
+
+            // Clear previous output
+            const outputDiv = document.getElementById('output');
+            const list = document.getElementById('fizzbuzzList');
+            list.innerHTML = '';
+
+            // Define divisor-word pairs for dynamic string building
+            const divisorWords = [
+                { divisor: firstDivisor, word: firstWord },
+                { divisor: secondDivisor, word: secondWord },
+                { divisor: thirdDivisor, word: thirdWord }
+            ];
+
+            // Generate FizzBuzz sequence
+            for (let iCounter = 1; iCounter <= maxNumber; iCounter++) {
+                const listItem = document.createElement('li');
+                let output = '';
+
+                // Dynamically build the output string by checking each divisor
+                for (let i = 0; i < divisorWords.length; i++) {
+                    if (checkDivision(iCounter, divisorWords[i].divisor)) {
+                        if (output !== '') {
+                            output += ', ';
+                        }
+                        output += divisorWords[i].word;
+                    }
+                }
+
+                // If no divisors matched, use the default value (or blank if default is empty)
+                if (output === '') {
+                    output = defaultValue;
+                }
+
+                listItem.textContent = output;
+                list.appendChild(listItem);
+            }
+
+            // Show output
+            outputDiv.style.display = 'block';
+
+            // Smooth scroll to output
+            outputDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Allow Enter key to submit
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputs = document.querySelectorAll('input[type="text"], input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        runFizzBuzz();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
