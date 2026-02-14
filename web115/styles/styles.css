@@ -133,13 +133,13 @@ a:hover {
 }
 
 
-.header-container {
+header-container {
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
-.logo {
-  width: 80px;
+logo {
+  width: 20px;
   height: auto;
 }
