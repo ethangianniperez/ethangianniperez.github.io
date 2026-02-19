@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Empire State Auto Repair</title>
+  <meta charset="UTF-8">
+        <title>Ethan Perez's Enthusiastic Penguin — WEB115 — Contact Card</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="scripts/HTMLInclude.js" defer></script>
+        <link rel="stylesheet" href="styles/styles.css">
   <style>
-    /* ── Embedded Stylesheet ── */
+
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -20,7 +22,7 @@
       justify-content: center;
     }
 
-    /* Validation badge */
+
     .validation {
       position: fixed;
       top: 12px;
@@ -28,7 +30,7 @@
       z-index: 100;
     }
 
-    /* ── Card ── */
+  
     .card {
       width: min(90vw, 680px);
       aspect-ratio: 3.5 / 2;
@@ -38,7 +40,7 @@
       grid-template-columns: 1fr 180px;
     }
 
-    /* ── Left panel ── */
+
     .left {
       padding: clamp(16px, 3%, 28px) clamp(16px, 3.5%, 30px);
       display: flex;
@@ -92,7 +94,7 @@
       text-decoration: underline;
     }
 
-    /* ── Right panel ── */
+ 
     .right {
       padding: clamp(14px, 2.5%, 22px) clamp(12px, 2%, 18px);
       display: flex;
@@ -134,14 +136,14 @@
 </head>
 <body>
 
-  <!-- W3C Validation -->
+<div data-include="components/header.html"></div>
   <div class="validation">
     <a href="https://validator.w3.org/check?uri=referer" target="_blank">
       <img src="https://www.w3.org/Icons/valid-html401-blue" alt="Valid HTML" width="88" height="31" />
     </a>
   </div>
 
-  <!-- Business Card -->
+
   <div class="card" role="main">
 
     <div class="left">
@@ -186,6 +188,6 @@
       <p class="hours">Sun: Closed</p>
     </div>
   </div>
-
+<div data-include="components/footer.html"></div>
 </body>
 </html>
