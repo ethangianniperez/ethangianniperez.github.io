@@ -1,193 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-        <title>Ethan Perez's Enthusiastic Penguin — WEB115 — Contact Card</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="scripts/HTMLInclude.js" defer></script>
-        <link rel="stylesheet" href="styles/styles.css">
-  <style>
+<meta charset="UTF-8">
+<title>Empire State Auto Repair</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<script src="../scripts/HTMLInclude.js" defer></script>
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
 
-    html, body {
-      height: 100%;
-      width: 100%;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-      background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+html, body {
+    height: 100%;
+}
 
+/* Background */
+body {
+    background: linear-gradient(135deg, #1D428A, #F58426);
+}
 
-    .validation {
-      position: fixed;
-      top: 12px;
-      right: 12px;
-      z-index: 100;
-    }
+/* Centering wrapper */
+.center-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-  
-    .card {
-      width: min(90vw, 680px);
-      aspect-ratio: 3.5 / 2;
-      background: #ffffff;
-      border: 2px solid #000000;
-      display: grid;
-      grid-template-columns: 1fr 180px;
-    }
+/* Floating Card */
+.card {
+    background: white;
+    width: 520px;
+    height: 300px;
+    border-radius: 14px;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 160px;
+}
 
+/* Left side */
+.left {
+    border-right: 2px solid #1D428A;
+    padding-right: 12px;
+}
 
-    .left {
-      padding: clamp(16px, 3%, 28px) clamp(16px, 3.5%, 30px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-right: 2px solid #000000;
-    }
+.biz-name {
+    font-size: 22px;
+    font-weight: bold;
+    color: #1D428A;
+}
 
-    .biz-name {
-      font-size: clamp(18px, 4vw, 32px);
-      font-weight: bold;
-      color: #000000;
-      line-height: 1.1;
-    }
+.tagline {
+    font-size: 11px;
+    color: #555;
+    margin-bottom: 14px;
+}
 
-    .tagline {
-      font-size: clamp(6px, 1vw, 8.5px);
-      color: #000000;
-      margin-top: 4px;
-    }
+.name {
+    font-size: 17px;
+    font-weight: bold;
+}
 
-    .person-name {
-      font-size: clamp(13px, 2.2vw, 18px);
-      font-weight: bold;
-      color: #000000;
-    }
+.title {
+    font-size: 12px;
+    color: #444;
+    margin-bottom: 10px;
+}
 
-    .person-title {
-      font-size: clamp(6.5px, 1.05vw, 9px);
-      color: #000000;
-      margin-top: 2px;
-    }
+.contact {
+    font-size: 12px;
+    line-height: 1.5;
+}
 
-    .contact {
-      margin-top: clamp(6px, 1%, 12px);
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
+.contact a {
+    color: #1D428A;
+    text-decoration: none;
+}
 
-    .contact-item {
-      font-size: clamp(6.5px, 1.05vw, 8.5px);
-      color: #000000;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
+/* Right side */
+.right {
+    padding-left: 12px;
+    font-size: 12px;
+}
 
-    .contact-item a {
-      color: #000000;
-      text-decoration: underline;
-    }
+.right h4 {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
 
- 
-    .right {
-      padding: clamp(14px, 2.5%, 22px) clamp(12px, 2%, 18px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      gap: 4px;
-    }
+.services {
+    padding-left: 15px;
+    margin-bottom: 12px;
+}
 
-    .right-heading {
-      font-size: clamp(7px, 1.1vw, 9px);
-      font-weight: bold;
-      color: #000000;
-      text-transform: uppercase;
-      margin-top: 6px;
-    }
-
-    .right-heading:first-child {
-      margin-top: 0;
-    }
-
-    .service-list {
-      list-style: disc;
-      padding-left: 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .service-list li {
-      font-size: clamp(6.5px, 1vw, 8.5px);
-      color: #000000;
-    }
-
-    .hours {
-      font-size: clamp(6.5px, 1vw, 8.5px);
-      color: #000000;
-    }
-  </style>
+/* Validation Badge */
+.validation {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
+</style>
 </head>
+
 <body>
 
-<div data-include="components/header.html"></div>
-  <div class="validation">
-    <a href="https://validator.w3.org/check?uri=referer" target="_blank">
-      <img src="https://www.w3.org/Icons/valid-html401-blue" alt="Valid HTML" width="88" height="31" />
-    </a>
-  </div>
+<!-- HEADER INCLUDE -->
+<div data-include="../components/header.html"></div>
 
+<div class="validation">
+<a href="https://validator.w3.org/check?uri=referer" target="_blank">
+<img src="https://www.w3.org/Icons/valid-html401-blue" alt="Valid HTML" width="88" height="31">
+</a>
+</div>
 
-  <div class="card" role="main">
+<!-- CENTERED CARD AREA -->
+<div class="center-wrapper">
 
-    <div class="left">
-      <div>
-        <div class="biz-name">Empire State Auto Repair</div>
-        <div class="tagline">Honest Service &middot; Expert Repairs &middot; Every Make &amp; Model</div>
-      </div>
+    <div class="card">
 
-      <div>
-        <div class="person-name">Ethan G. Perez</div>
-        <div class="person-title">Owner &amp; Master Technician</div>
+        <div class="left">
+            <div class="biz-name">Empire State Auto Repair</div>
+            <div class="tagline">Honest Service · Expert Repairs · Every Make &amp; Model</div>
 
-        <div class="contact">
-          <div class="contact-item">
-            <span>(212) 555-0347</span>
-          </div>
-          <div class="contact-item">
-            <a href="mailto:ethan@empirestateautorepair.com">ethan@empirestateautorepair.com</a>
-          </div>
-          <div class="contact-item">
-            <a href="https://www.empirestateautorepair.com" target="_blank">www.empirestateautorepair.com</a>
-          </div>
-          <div class="contact-item">
-            <span>4318 Queens Blvd, Sunnyside, NY 11104</span>
-          </div>
+            <div class="name">Ethan G. Perez</div>
+            <div class="title">Owner &amp; Master Technician</div>
+
+            <div class="contact">
+                Phone: (212) 555-0347<br>
+                Email: <a href="mailto:ethan@empirestateautorepair.com">ethan@empirestateautorepair.com</a><br>
+                Website: <a href="https://www.empirestateautorepair.com">www.empirestateautorepair.com</a><br>
+                4318 Queens Blvd<br>
+                Sunnyside, NY 11104
+            </div>
         </div>
-      </div>
+
+        <div class="right">
+            <h4>Services</h4>
+            <ul class="services">
+                <li>Oil Changes</li>
+                <li>Brake Repair</li>
+                <li>Engine Diagnostics</li>
+                <li>Tire Service</li>
+                <li>Tune-Ups</li>
+            </ul>
+
+            <h4>Hours</h4>
+            Mon–Fri: 8am–6pm<br>
+            Sat: 9am–3pm<br>
+            Sun: Closed
+        </div>
+
     </div>
 
-    <div class="right">
-      <p class="right-heading">Our Services</p>
-      <ul class="service-list">
-        <li>Oil Changes</li>
-        <li>Brake Repair</li>
-        <li>Engine Diagnostics</li>
-        <li>Tire Service</li>
-        <li>Tune-Ups</li>
-      </ul>
-      <p class="right-heading">Hours</p>
-      <p class="hours">Mon–Fri: 8am – 6pm</p>
-      <p class="hours">Sat: 9am – 3pm</p>
-      <p class="hours">Sun: Closed</p>
-    </div>
-  </div>
-<div data-include="components/footer.html"></div>
+</div>
+
+<!-- FOOTER INCLUDE -->
+<div data-include="../components/footer.html"></div>
+
 </body>
 </html>
