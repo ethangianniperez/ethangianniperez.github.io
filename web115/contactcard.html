@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empire State Auto Repair</title>
+  <style>
+    /* ── Embedded Stylesheet ── */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Validation badge */
+    .validation {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 100;
+    }
+
+    /* ── Card ── */
+    .card {
+      width: min(90vw, 680px);
+      aspect-ratio: 3.5 / 2;
+      background: #ffffff;
+      border: 2px solid #000000;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+    }
+
+    /* ── Left panel ── */
+    .left {
+      padding: clamp(16px, 3%, 28px) clamp(16px, 3.5%, 30px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 2px solid #000000;
+    }
+
+    .biz-name {
+      font-size: clamp(18px, 4vw, 32px);
+      font-weight: bold;
+      color: #000000;
+      line-height: 1.1;
+    }
+
+    .tagline {
+      font-size: clamp(6px, 1vw, 8.5px);
+      color: #000000;
+      margin-top: 4px;
+    }
+
+    .person-name {
+      font-size: clamp(13px, 2.2vw, 18px);
+      font-weight: bold;
+      color: #000000;
+    }
+
+    .person-title {
+      font-size: clamp(6.5px, 1.05vw, 9px);
+      color: #000000;
+      margin-top: 2px;
+    }
+
+    .contact {
+      margin-top: clamp(6px, 1%, 12px);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .contact-item {
+      font-size: clamp(6.5px, 1.05vw, 8.5px);
+      color: #000000;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-item a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    /* ── Right panel ── */
+    .right {
+      padding: clamp(14px, 2.5%, 22px) clamp(12px, 2%, 18px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .right-heading {
+      font-size: clamp(7px, 1.1vw, 9px);
+      font-weight: bold;
+      color: #000000;
+      text-transform: uppercase;
+      margin-top: 6px;
+    }
+
+    .right-heading:first-child {
+      margin-top: 0;
+    }
+
+    .service-list {
+      list-style: disc;
+      padding-left: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .service-list li {
+      font-size: clamp(6.5px, 1vw, 8.5px);
+      color: #000000;
+    }
+
+    .hours {
+      font-size: clamp(6.5px, 1vw, 8.5px);
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- W3C Validation -->
+  <div class="validation">
+    <a href="https://validator.w3.org/check?uri=referer" target="_blank">
+      <img src="https://www.w3.org/Icons/valid-html401-blue" alt="Valid HTML" width="88" height="31" />
+    </a>
+  </div>
+
+  <!-- Business Card -->
+  <div class="card" role="main">
+
+    <div class="left">
+      <div>
+        <div class="biz-name">Empire State Auto Repair</div>
+        <div class="tagline">Honest Service &middot; Expert Repairs &middot; Every Make &amp; Model</div>
+      </div>
+
+      <div>
+        <div class="person-name">Ethan G. Perez</div>
+        <div class="person-title">Owner &amp; Master Technician</div>
+
+        <div class="contact">
+          <div class="contact-item">
+            <span>(212) 555-0347</span>
+          </div>
+          <div class="contact-item">
+            <a href="mailto:ethan@empirestateautorepair.com">ethan@empirestateautorepair.com</a>
+          </div>
+          <div class="contact-item">
+            <a href="https://www.empirestateautorepair.com" target="_blank">www.empirestateautorepair.com</a>
+          </div>
+          <div class="contact-item">
+            <span>4318 Queens Blvd, Sunnyside, NY 11104</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="right">
+      <p class="right-heading">Our Services</p>
+      <ul class="service-list">
+        <li>Oil Changes</li>
+        <li>Brake Repair</li>
+        <li>Engine Diagnostics</li>
+        <li>Tire Service</li>
+        <li>Tune-Ups</li>
+      </ul>
+      <p class="right-heading">Hours</p>
+      <p class="hours">Mon–Fri: 8am – 6pm</p>
+      <p class="hours">Sat: 9am – 3pm</p>
+      <p class="hours">Sun: Closed</p>
+    </div>
+  </div>
+
+</body>
+</html>
