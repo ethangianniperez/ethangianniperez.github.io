@@ -1,14 +1,197 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ethan Perez Home</title>
-    </head>
-    <body>
-        <h2>Ethan Perez</h2>
-        <p>Welcome to my Website! My name is Ethan Perez. I am a Full Stack Programming AAS major, and am on my second to last semester.</p>
-        <a href="web250/index.html" target="_blank">Click to go to my WEB250 course page!</a>
-        <a href="web115/index.html">Click to go to my WEB115 course page!</a>
-    </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ethan Perez | Home</title>
+    <style>
+      .selected * a {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+:root {
+    --knicks-blue: #1D428A;
+    --knicks-orange: #F58426;
+    --cream: #F5F1E8;
+    --dark-gray: #2B2B2B;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--cream);
+    color: var(--dark-gray);
+    line-height: 1.6;
+}
+
+
+header,
+main,
+footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.25rem;
+}
+
+
+header {
+    background-color: var(--knicks-blue);
+    color: white;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+header nav a {
+    color: var(--knicks-orange);
+    text-decoration: none;
+    margin-right: 0.75rem;
+    font-weight: bold;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+
+main {
+    background-color: #ffffff;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--knicks-blue);
+}
+
+main p {
+    margin-bottom: 1rem;
+}
+
+
+ul,
+ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+li {
+    margin-bottom: 0.75rem;
+}
+
+
+figure {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+figure img {
+    max-width: 240px;
+    height: auto;
+    border-radius: 4px;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    color: #555555;
+    margin-top: 0.4rem;
+}
+
+
+footer {
+    background-color: var(--knicks-blue);
+    color: white;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer nav {
+    margin-bottom: 0.75rem;
+}
+
+footer nav a {
+    color: var(--knicks-orange);
+    text-decoration: none;
+    margin: 0 0.4rem;
+}
+
+footer nav a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    margin-bottom: 0.4rem;
+}
+
+
+a {
+    color: var(--knicks-blue);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.white-circle {
+        position: fixed;
+        bottom: 2px;
+        left: 2px;
+        background-color: white;
+        color: white;
+        border-radius: 50%;
+        width: 105px;
+        height: 105px;
+        text-align: center;
+}
+    </style>
+    <script
+      src="https://lint.page/kit/67ff88.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <h1>Jordan Perez</h1>
+    </header>
+    <main>
+      <h2>Home</h2>
+      <p>
+        Welcome to my personal website! Here you can find information about my
+        projects, skills, and interests, as well as links to my college course
+        pages.
+      </p>
+      <h3>College Course Pages</h3>
+      <ul>
+        <li>
+          <a href="web115/index.html" target="_blank">WEB115 Course Page</a>
+        </li>
+        <li>
+          <a href="web250/index.html" target="_blank">WEB250 Course Page</a>
+        </li>
+      </ul>
+      <h3>About Me</h3>
+      <p>
+        My name is Jordan Perez, and I am a web development student. I have a
+        passion for programming and learning about new technologies. In my free
+        time, I enjoy playing sports and listening to music. You can learn more
+        about me by reading my introduction at this link:
+        <a
+          href="https://docs.google.com/document/d/1sEY5aKQYO75boyoC8TEId1j921XHD5ZJNmqoKMeZSI4/edit?tab=t.0#heading=h.udodicv3ml3z"
+          target="_blank"
+          >My Introduction</a
+        >
+      </p>
+      <!-- This white circle is for visibility of the accumulus validator icon -->
+      <div class="white-circle"></div>
+    </main>
+    <footer>
+      <p>&copy; Ethan Perez 2026</p>
+    </footer>
+  </body>
 </html>
