@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="scripts/HTMLInclude.js" defer></script>
+  <link rel="stylesheet" href="styles/styles.css">
+  <title>Ethan Perez's Enthusiastic Penguin — WEB115 — Introduction Form</title>
+</head>
+<body>
+    <div data-include="components/header.html"></div>
+<h1>Introduction Form</h1>
+<p>Fields marked * are required.</p>
+
+<form id="intro-form">
+
+  <p>
+    <label for="firstname">First Name *</label><br />
+    <input type="text" id="firstname" name="firstname" value="Ethan" required aria-required="true" />
+  </p>
+
+  <p>
+    <label for="middleinitial">Middle Initial</label><br />
+    <input type="text" id="middleinitial" name="middleinitial" value="" maxlength="2" />
+  </p>
+
+  <p>
+    <label for="lastname">Last Name *</label><br />
+    <input type="text" id="lastname" name="lastname" value="Perez" required aria-required="true" />
+  </p>
+
+  <p>
+    <label for="personal">Personal Background *</label><br />
+    <textarea id="personal" name="personal" required aria-required="true" cols="60" rows="3">I am Puerto Rican but born here in NC. I have one older brother and a cousin that I've grown up with, so she is like a sister to me. I am also the youngest of my entire extended family at 16 years old.</textarea>
+  </p>
+
+  <p>
+    <label for="professional">Professional Background *</label><br />
+    <textarea id="professional" name="professional" required aria-required="true" cols="60" rows="3">I have never had a professional job as I am still under the required ages for most jobs.</textarea>
+  </p>
+
+  <p>
+    <label for="academic">Academic Background *</label><br />
+    <textarea id="academic" name="academic" required aria-required="true" cols="60" rows="3">I am majoring in Full Stack Programming and am on my second to last semester!</textarea>
+  </p>
+
+  <p>
+    <label for="computer">Primary Computer Platform *</label><br />
+    <input type="text" id="computer" name="computer" value="I use a PC that I built with Windows 11 installed." required aria-required="true" size="60" />
+  </p>
+
+  <p>Courses I'm Taking &amp; Why (format: COURSE – Name: Reason)</p>
+
+  <p>
+    <label for="course-0">Course 1 *</label><br />
+    <input type="text" id="course-0" name="course[]" value="ENG111 – Writing and Inquiry: This is a required course for my AAS degree." required aria-required="true" size="60" />
+  </p>
+
+  <p>
+    <label for="course-1">Course 2 *</label><br />
+    <input type="text" id="course-1" name="course[]" value="WEB250 – Database Driven Websites: This is a major requirement for my degree. This course will teach me about PHP and NodeJS among other back-end development programs." required aria-required="true" size="60" />
+  </p>
+
+  <p>
+    <label for="course-2">Course 3 *</label><br />
+    <input type="text" id="course-2" name="course[]" value="WEB115 – Web Markup and Scripting: This is a major requirement for my degree. This course will teach me about front-end development like JavaScript, HTML, etc." required aria-required="true" size="60" />
+  </p>
+
+  <p>
+    <label for="hobbies">Hobbies &amp; Interests *</label><br />
+    <textarea id="hobbies" name="hobbies" required aria-required="true" cols="60" rows="2">I like cars, video games, and sports.</textarea>
+  </p>
+
+  <p>
+    <label for="quote">Favorite Quote *</label><br />
+    <input type="text" id="quote" name="quote" value="There is no elevator to success. You have to take the stairs." required aria-required="true" size="60" />
+  </p>
+
+  <p>
+    <label for="quoteauthor">Quote Author *</label><br />
+    <input type="text" id="quoteauthor" name="quoteauthor" value="Zig Ziglar" required aria-required="true" />
+  </p>
+
+  <p>
+    <label for="email">Email Address</label><br />
+    <input type="email" id="email" name="email" value="" placeholder="you@example.com" />
+  </p>
+
+  <p>
+    <label for="github">GitHub URL</label><br />
+    <input type="url" id="github" name="github" value="" placeholder="https://github.com/yourusername" size="50" />
+  </p>
+
+  <p>
+    <label for="linkedin">LinkedIn URL</label><br />
+    <input type="url" id="linkedin" name="linkedin" value="" placeholder="https://linkedin.com/in/yourprofile" size="50" />
+  </p>
+
+  <p>
+    <label for="portfolio">Portfolio / GitHub Pages URL</label><br />
+    <input type="url" id="portfolio" name="portfolio" value="" placeholder="https://yourusername.github.io" size="50" />
+  </p>
+
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+
+</form>
+
+<hr />
+
+<section id="output" style="display:none;" aria-live="polite" aria-label="Your Introduction">
+  <h2 id="out-fullname"></h2>
+  <p id="out-alias"></p>
+
+  <h3>Personal Background:</h3>
+  <p id="out-personal"></p>
+
+  <h3>Professional Background:</h3>
+  <p id="out-professional"></p>
+
+  <h3>Academic Background:</h3>
+  <p id="out-academic"></p>
+
+  <h3>Primary Computer Platform:</h3>
+  <p id="out-computer"></p>
+
+  <h3>Courses I'm Taking &amp; Why:</h3>
+  <ul id="out-courses"></ul>
+
+  <h3>Hobbies &amp; Interests:</h3>
+  <p id="out-hobbies"></p>
+
+  <h3>Contact &amp; Links:</h3>
+  <ul id="out-links"></ul>
+
+  <blockquote>
+    <p id="out-quote"></p>
+    <cite id="out-quoteauthor"></cite>
+  </blockquote>
+</section>
+
+<script>
+  document.getElementById('intro-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    if (!this.checkValidity()) {
+      var invalid = this.querySelector(':invalid');
+      if (invalid) {
+        invalid.focus();
+        invalid.reportValidity();
+      }
+      return;
+    }
+
+    var get = function(id) { return document.getElementById(id).value.trim(); };
+
+    var firstName    = get('firstname');
+    var middleInit   = get('middleinitial');
+    var lastName     = get('lastname');
+    var personal     = get('personal');
+    var professional = get('professional');
+    var academic     = get('academic');
+    var computer     = get('computer');
+    var hobbies      = get('hobbies');
+    var quote        = get('quote');
+    var quoteAuthor  = get('quoteauthor');
+    var email        = get('email');
+    var github       = get('github');
+    var linkedin     = get('linkedin');
+    var portfolio    = get('portfolio');
+
+    var courses = [get('course-0'), get('course-1'), get('course-2')].filter(Boolean);
+
+    var fullName = firstName + (middleInit ? ' ' + middleInit + '.' : '') + ' ' + lastName;
+
+    document.getElementById('out-fullname').textContent = fullName;
+    document.getElementById('out-alias').textContent = 'Enthusiastic Penguin';
+    document.getElementById('out-personal').textContent = personal;
+    document.getElementById('out-professional').textContent = professional;
+    document.getElementById('out-academic').textContent = academic;
+    document.getElementById('out-computer').textContent = computer;
+    document.getElementById('out-hobbies').textContent = hobbies;
+    document.getElementById('out-quote').textContent = '"' + quote + '"';
+    document.getElementById('out-quoteauthor').textContent = '– ' + quoteAuthor;
+
+    var courseUl = document.getElementById('out-courses');
+    courseUl.innerHTML = '';
+    courses.forEach(function(course) {
+      var colonIdx = course.indexOf(':');
+      var li = document.createElement('li');
+      if (colonIdx !== -1) {
+        var courseName = course.substring(0, colonIdx).trim();
+        var reason     = course.substring(colonIdx + 1).trim();
+        li.textContent = courseName;
+        if (reason) {
+          var subUl = document.createElement('ul');
+          var subLi = document.createElement('li');
+          subLi.textContent = reason;
+          subUl.appendChild(subLi);
+          li.appendChild(subUl);
+        }
+      } else {
+        li.textContent = course;
+      }
+      courseUl.appendChild(li);
+    });
+
+    var linksUl = document.getElementById('out-links');
+    linksUl.innerHTML = '';
+    var links = [
+      { label: 'Email',     value: email,     href: 'mailto:' + email },
+      { label: 'GitHub',    value: github,    href: github },
+      { label: 'LinkedIn',  value: linkedin,  href: linkedin },
+      { label: 'Portfolio', value: portfolio, href: portfolio }
+    ];
+    links.forEach(function(link) {
+      if (link.value) {
+        var li = document.createElement('li');
+        var a  = document.createElement('a');
+        a.textContent = link.label;
+        a.href = link.href;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        li.appendChild(a);
+        linksUl.appendChild(li);
+      }
+    });
+    if (linksUl.children.length === 0) {
+      var li = document.createElement('li');
+      li.textContent = 'No contact links provided.';
+      linksUl.appendChild(li);
+    }
+
+    var output = document.getElementById('output');
+    output.style.display = 'block';
+    output.scrollIntoView({ behavior: 'smooth' });
+  });
+</script>
+    <div data-include="components/footer.html"></div>
+</body>
+</html>
