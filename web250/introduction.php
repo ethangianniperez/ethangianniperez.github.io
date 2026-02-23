@@ -8,11 +8,11 @@
         <link rel="stylesheet" href="styles250/styles.css" />
     </head>
     <body>
-        <div data-include="components/header.html"></div>
+        <?php include 'components/header.php'; ?>
         <main>
             <h2>Introduction</h2>
             <p>Welcome to the introduction page for my WEB250 course. You can read more about me right <a href="introduction.html">here.</a> Thanks!</p>
         </main>
-        <div data-include="components/footer.html"></div>
+        <?php include 'components/footer.php'; ?>
     </body>
 </html>
