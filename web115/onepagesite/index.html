@@ -1,518 +1,775 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>W3.CSS Template</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Lato"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <style>
-      body,
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Lato", sans-serif;
-      }
-      body,
-      html {
-        height: 100%;
-        color: #777;
-        line-height: 1.8;
-      }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethan Perez's Enthusiastic Penguin — WEB115</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@400;500&family=Roboto+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1D428A;
+      --blue-light: #2a56b0;
+      --orange: #F58426;
+      --cream: #F5F1E8;
+      --dark: #2B2B2B;
+      --mid: #555;
+      --border: #ddd6c8;
+    }
 
-      /* Create a Parallax Effect */
-      .bgimg-1,
-      .bgimg-2,
-      .bgimg-3 {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-      /* First image (Logo. Full height) */
-      .bgimg-1 {
-        background-image: url("/w3images/parallax1.jpg");
-        min-height: 100%;
-      }
+    html { scroll-behavior: smooth; }
 
-      /* Second image (Portfolio) */
-      .bgimg-2 {
-        background-image: url("/w3images/parallax2.jpg");
-        min-height: 400px;
-      }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      line-height: 1.7;
+    }
 
-      /* Third image (Contact) */
-      .bgimg-3 {
-        background-image: url("/w3images/parallax3.jpg");
-        min-height: 400px;
-      }
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      gap: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+      box-shadow: 0 2px 12px rgba(0,0,0,.3);
+    }
+    nav::-webkit-scrollbar { display: none; }
 
-      .w3-wide {
-        letter-spacing: 10px;
-      }
-      .w3-hover-opacity {
-        cursor: pointer;
-      }
+    .nav-brand {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      color: #fff;
+      padding: 0 24px;
+      font-size: 1rem;
+      letter-spacing: .05em;
+      white-space: nowrap;
+      border-right: 1px solid rgba(255,255,255,.15);
+      height: 56px;
+      display: flex;
+      align-items: center;
+    }
+    .nav-brand span { color: var(--orange); }
 
-      /* Turn off parallax scrolling for tablets and phones */
-      @media only screen and (max-device-width: 1600px) {
-        .bgimg-1,
-        .bgimg-2,
-        .bgimg-3 {
-          background-attachment: scroll;
-          min-height: 400px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navbar (sit on top) -->
-    <div class="w3-top">
-      <div class="w3-bar" id="myNavbar">
-        <a
-          class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
-          href="javascript:void(0);"
-          onclick="toggleFunction()"
-          title="Toggle Navigation Menu"
-        >
-          <i class="fa fa-bars"></i>
-        </a>
-        <a href="#home" class="w3-bar-item w3-button">HOME</a>
-        <a href="#about" class="w3-bar-item w3-button w3-hide-small"
-          ><i class="fa fa-user"></i> ABOUT</a
-        >
-        <a href="#portfolio" class="w3-bar-item w3-button w3-hide-small"
-          ><i class="fa fa-th"></i> PORTFOLIO</a
-        >
-        <a href="#contact" class="w3-bar-item w3-button w3-hide-small"
-          ><i class="fa fa-envelope"></i> CONTACT</a
-        >
-        <a
-          href="#"
-          class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-red"
-        >
-          <i class="fa fa-search"></i>
-        </a>
-      </div>
+    nav a {
+      font-family: 'Oswald', sans-serif;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      text-decoration: none;
+      padding: 0 18px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      transition: color .2s, background .2s;
+    }
+    nav a:hover { color: #fff; background: rgba(255,255,255,.08); }
 
-      <!-- Navbar on small screens -->
-      <div
-        id="navDemo"
-        class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium"
-      >
-        <a
-          href="#about"
-          class="w3-bar-item w3-button"
-          onclick="toggleFunction()"
-          >ABOUT</a
-        >
-        <a
-          href="#portfolio"
-          class="w3-bar-item w3-button"
-          onclick="toggleFunction()"
-          >PORTFOLIO</a
-        >
-        <a
-          href="#contact"
-          class="w3-bar-item w3-button"
-          onclick="toggleFunction()"
-          >CONTACT</a
-        >
-        <a href="#" class="w3-bar-item w3-button">SEARCH</a>
-      </div>
+    /* ── HEADER HERO ── */
+    #home {
+      background: var(--blue);
+      padding: 72px 40px 56px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 40px,
+        rgba(255,255,255,.02) 40px,
+        rgba(255,255,255,.02) 80px
+      );
+    }
+    #home h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: .04em;
+      position: relative;
+    }
+    #home h1 span { color: var(--orange); }
+    #home .tagline {
+      margin-top: 12px;
+      font-size: 1.1rem;
+      opacity: .8;
+      font-style: italic;
+      position: relative;
+    }
+    #home .subtitle {
+      margin-top: 8px;
+      font-size: .9rem;
+      opacity: .6;
+      font-family: 'Roboto Mono', monospace;
+      letter-spacing: .1em;
+      position: relative;
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    section:last-of-type { border-bottom: none; }
+
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      padding-bottom: 12px;
+      border-bottom: 3px solid var(--orange);
+      display: inline-block;
+    }
+
+    h3 {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: var(--blue);
+      margin: 24px 0 8px;
+      letter-spacing: .03em;
+    }
+
+    p { margin-bottom: 14px; }
+
+    /* ── INTRODUCTION ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 600px) { .intro-grid { grid-template-columns: 1fr; } }
+    .intro-grid figure img {
+      width: 100%;
+      border-radius: 4px;
+      border: 4px solid var(--blue);
+      box-shadow: 6px 6px 0 var(--orange);
+    }
+    .intro-grid figure figcaption {
+      font-size: .78rem;
+      color: var(--mid);
+      margin-top: 8px;
+      text-align: center;
+    }
+    .intro-grid ul { padding-left: 0; list-style: none; }
+    .intro-grid li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .95rem;
+    }
+    .intro-grid li:last-child { border-bottom: none; }
+    .intro-grid ol { padding-left: 20px; margin-top: 6px; }
+    .intro-grid ol li { border: none; padding: 4px 0; }
+    blockquote {
+      border-left: 4px solid var(--orange);
+      padding: 12px 20px;
+      margin: 20px 0;
+      background: rgba(245,132,38,.07);
+      font-style: italic;
+      color: var(--mid);
+    }
+
+    /* ── BRAND ── */
+    .color-swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 16px 0;
+    }
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .9rem;
+    }
+    .swatch-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,.1);
+      flex-shrink: 0;
+    }
+
+    /* ── CONTRACT ── */
+    #contract p { font-size: .95rem; }
+    #contract .signed {
+      margin-top: 20px;
+      font-style: italic;
+      font-weight: 500;
+      color: var(--blue);
+    }
+
+    /* ── FIZZBUZZ TABS ── */
+    .fb-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+    }
+    .fb-tab {
+      font-family: 'Oswald', sans-serif;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 2px solid var(--blue);
+      background: transparent;
+      color: var(--blue);
+      cursor: pointer;
+      transition: all .2s;
+      border-radius: 2px;
+    }
+    .fb-tab.active, .fb-tab:hover {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .fb-panel { display: none; }
+    .fb-panel.active { display: block; }
+
+    /* form styling */
+    .fb-form { max-width: 560px; }
+    .fb-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 14px;
+    }
+    .fb-row label {
+      font-size: .85rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+      color: var(--mid);
+    }
+    .fb-row input, .fb-row textarea {
+      border: 1.5px solid var(--border);
+      background: #fff;
+      padding: 8px 12px;
+      font-family: 'Roboto', sans-serif;
+      font-size: .95rem;
+      color: var(--dark);
+      outline: none;
+      transition: border-color .2s;
+      border-radius: 2px;
+    }
+    .fb-row input:focus, .fb-row textarea:focus { border-color: var(--blue); }
+    .fb-row input[type="number"] { max-width: 140px; }
+
+    .btn {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      padding: 10px 28px;
+      cursor: pointer;
+      font-size: .9rem;
+      transition: background .2s, transform .1s;
+      border-radius: 2px;
+      margin-top: 8px;
+    }
+    .btn:hover { background: #d4711e; }
+    .btn:active { transform: scale(.98); }
+
+    .fb-output {
+      margin-top: 24px;
+      max-height: 360px;
+      overflow-y: auto;
+      border: 1.5px solid var(--border);
+      padding: 16px;
+      background: #fff;
+      border-radius: 2px;
+    }
+    .fb-output ol, .fb-output div { font-size: .9rem; line-height: 1.9; }
+    .fb-greeting {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.1rem;
+      color: var(--blue);
+      margin-bottom: 12px;
+    }
+
+    /* fb2 inline divs */
+    .fb-output-inline div {
+      display: inline-block;
+      padding: 2px 8px;
+      margin: 2px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      font-family: 'Roboto Mono', monospace;
+      font-size: .82rem;
+    }
+
+    /* ── INTRO FORM ── */
+    .iform { max-width: 640px; }
+    .iform .fb-row textarea { min-height: 72px; resize: vertical; }
+    #if-output {
+      margin-top: 32px;
+      padding: 24px;
+      border: 2px solid var(--blue);
+      background: #fff;
+      display: none;
+    }
+    #if-output h3 { margin-top: 18px; font-size: 1rem; }
+    #if-output h2 { font-size: 1.3rem; margin-bottom: 4px; border: none; padding: 0; }
+    #if-output blockquote { margin-top: 16px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 28px 20px;
+      font-size: .83rem;
+    }
+    footer a { color: var(--orange); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">Enthusiastic <span>Penguin</span></div>
+  <a href="#home">Home</a>
+  <a href="#introduction">Intro</a>
+  <a href="#brand">Brand</a>
+  <a href="#contract">Contract</a>
+  <a href="#fizzbuzz">FizzBuzz</a>
+  <a href="#introform">Intro Form</a>
+</nav>
+
+<!-- HERO -->
+<div id="home">
+  <h1>Ethan Perez's <span>Enthusiastic Penguin</span></h1>
+  <p class="tagline">"Built on Trust. Driven by Quality."</p>
+  <p class="subtitle">WEB115 — Web Markup &amp; Scripting — Spring 2026</p>
+</div>
+
+<!-- ══ HOME ══ -->
+<section>
+  <h2>Home</h2>
+  <p>Welcome to my WEB115 course homepage. This site contains all of my coursework, assignments, and projects for this class throughout the semester.</p>
+  <p>WEB115 focuses on building strong foundational skills in web development, including proper HTML5 structure, validation, accessibility, and clean design. Use the navigation above to explore each section.</p>
+</section>
+
+<!-- ══ INTRODUCTION ══ -->
+<section id="introduction">
+  <h2>Introduction</h2>
+  <div class="intro-grid">
+    <figure>
+      <img src="images/IMG_2978resize.jpg" alt="Ethan Perez" onerror="this.style.display='none'">
+      <figcaption>Photo taken in a hotel in Wallkill, NY.</figcaption>
+    </figure>
+    <div>
+      <p>Hello everyone! I look forward to working with you all! I am taking Full Stack Programming AAS and am on my second to last semester. Some fun facts about me are that I like cars, video games, and sports.</p>
+      <ul>
+        <li><strong>Personal Background:</strong> I am Puerto Rican but born in North Carolina. I have one older brother and a cousin I grew up with who is like a sister to me. I am the youngest in my extended family at 16 years old.</li>
+        <li><strong>Professional Background:</strong> I have not had a professional job yet since I am under the required age for most jobs.</li>
+        <li><strong>Academic Background:</strong> Majoring in Full Stack Programming (AAS), currently in my second-to-last semester.</li>
+        <li><strong>Primary Computer:</strong> A PC that I built myself running Windows 11.</li>
+        <li>
+          <strong>Courses I'm Taking &amp; Why:</strong>
+          <ol>
+            <li><strong>ENG111 – Writing and Inquiry:</strong> Required for my AAS degree.</li>
+            <li><strong>WEB250 – Database Driven Websites:</strong> Teaches back-end development such as PHP and NodeJS.</li>
+            <li><strong>WEB115 – Web Markup and Scripting:</strong> Front-end development including HTML, CSS, and JavaScript.</li>
+          </ol>
+        </li>
+        <li><strong>Fun Facts:</strong> I enjoy cars, video games, and sports.</li>
+      </ul>
+      <blockquote>
+        "There is no elevator to success. You have to take the stairs."<br>
+        <strong>— Zig Ziglar</strong>
+      </blockquote>
     </div>
+  </div>
+</section>
 
-    <!-- First Parallax Image with Logo Text -->
-    <div class="bgimg-1 w3-display-container w3-opacity-min" id="home">
-      <div class="w3-display-middle" style="white-space: nowrap">
-        <span
-          class="w3-center w3-padding-large w3-black w3-xlarge w3-wide w3-animate-opacity"
-          >MY <span class="w3-hide-small">WEBSITE</span> LOGO</span
-        >
-      </div>
+<!-- ══ BRAND ══ -->
+<section id="brand">
+  <h2>Brand Guide</h2>
+
+  <h3>Brand Concept &amp; Mission</h3>
+  <p>Empire State Auto Repair is dedicated to providing reliable, honest, and high-quality automotive services. Our mission is to build lasting relationships with our customers by delivering transparent diagnostics, skilled workmanship, and dependable repairs that keep vehicles running safely and efficiently.</p>
+
+  <h3>Color Scheme</h3>
+  <div class="color-swatches">
+    <div class="swatch"><div class="swatch-dot" style="background:#1D428A"></div> Blue (#1D428A) — Headers &amp; accents</div>
+    <div class="swatch"><div class="swatch-dot" style="background:#F58426"></div> Orange (#F58426) — Highlights &amp; emphasis</div>
+    <div class="swatch"><div class="swatch-dot" style="background:#F5F1E8;border-color:#ccc"></div> Cream (#F5F1E8) — Backgrounds</div>
+    <div class="swatch"><div class="swatch-dot" style="background:#2B2B2B"></div> Dark Gray (#2B2B2B) — Body text</div>
+  </div>
+
+  <h3>Font Choices</h3>
+  <p><strong style="font-family:'Oswald'">Oswald</strong> — Headings, titles, and section headers</p>
+  <p><strong>Roboto</strong> — Paragraphs and lists</p>
+
+  <h3>Tagline</h3>
+  <blockquote>Built on Trust. Driven by Quality.</blockquote>
+</section>
+
+<!-- ══ CONTRACT ══ -->
+<section id="contract">
+  <h2>Contract</h2>
+  <p>I, Ethan G. Perez, agree to abide by the terms in my Spring 2026 WEB115-n850 Web Markup and Scripting with my instructor, Aastha Saxena.</p>
+  <p>I understand that all work that I do on my school and personal websites will be publicly available to the world. I will not put information there that is inappropriate for schoolwork, or that I wish to keep private.</p>
+  <p>I also understand that it is my work that counts for attendance, not logins or showing up for class. As such, failure to turn in assignments may show as absences.</p>
+  <p class="signed">Signed: Ethan G. Perez, 15 January 2026</p>
+</section>
+
+<!-- ══ FIZZBUZZ ══ -->
+<section id="fizzbuzz">
+  <h2>FizzBuzz Exercises</h2>
+
+  <div class="fb-tabs">
+    <button class="fb-tab active" onclick="showFB(0)">FizzBuzz 0</button>
+    <button class="fb-tab" onclick="showFB(1)">FizzBuzz 1</button>
+    <button class="fb-tab" onclick="showFB(2)">FizzBuzz 2</button>
+    <button class="fb-tab" onclick="showFB(3)">FizzBuzz 3</button>
+    <button class="fb-tab" onclick="showFB(4)">FizzBuzz 4</button>
+  </div>
+
+  <!-- FB0 -->
+  <div class="fb-panel active" id="fb-panel-0">
+    <h3>FizzBuzz 0 — Name Greeting &amp; Even/Odd Counter</h3>
+    <div class="fb-form">
+      <div class="fb-row"><label>First Name (Required)</label><input type="text" id="fb0-first" placeholder="First name"></div>
+      <div class="fb-row"><label>Middle Initial (Optional)</label><input type="text" id="fb0-mid" maxlength="1" placeholder="M"></div>
+      <div class="fb-row"><label>Last Name</label><input type="text" id="fb0-last" placeholder="Last name"></div>
+      <button class="btn" onclick="runFB0()">Submit</button>
     </div>
+    <div id="fb0-out"></div>
+  </div>
 
-    <!-- Container (About Section) -->
-    <div class="w3-content w3-container w3-padding-64" id="about">
-      <h3 class="w3-center">ABOUT ME</h3>
-      <p class="w3-center"><em>I love photography</em></p>
-      <p>
-        We have created a fictional "personal" website/blog, and our fictional
-        character is a hobby photographer. Lorem ipsum dolor sit amet,
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-        dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-        consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-        et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-      <div class="w3-row">
-        <div class="w3-col m6 w3-center w3-padding-large">
-          <p>
-            <b><i class="fa fa-user w3-margin-right"></i>My Name</b>
-          </p>
-          <br />
-          <img
-            src="/w3images/avatar_hat.jpg"
-            class="w3-round w3-image w3-opacity w3-hover-opacity-off"
-            alt="Photo of Me"
-            width="500"
-            height="333"
-          />
-        </div>
-
-        <!-- Hide this text on small devices -->
-        <div class="w3-col m6 w3-hide-small w3-padding-large">
-          <p>
-            Welcome to my website. I am lorem ipsum consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum consectetur
-            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-            exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat.
-          </p>
-        </div>
-      </div>
-      <p class="w3-large w3-center w3-padding-16">Im really good at:</p>
-      <p class="w3-wide"><i class="fa fa-camera"></i>Photography</p>
-      <div class="w3-light-grey">
-        <div
-          class="w3-container w3-padding-small w3-dark-grey w3-center"
-          style="width: 90%"
-        >
-          90%
-        </div>
-      </div>
-      <p class="w3-wide"><i class="fa fa-laptop"></i>Web Design</p>
-      <div class="w3-light-grey">
-        <div
-          class="w3-container w3-padding-small w3-dark-grey w3-center"
-          style="width: 85%"
-        >
-          85%
-        </div>
-      </div>
-      <p class="w3-wide"><i class="fa fa-photo"></i>Photoshop</p>
-      <div class="w3-light-grey">
-        <div
-          class="w3-container w3-padding-small w3-dark-grey w3-center"
-          style="width: 75%"
-        >
-          75%
-        </div>
-      </div>
+  <!-- FB1 -->
+  <div class="fb-panel" id="fb-panel-1">
+    <h3>FizzBuzz 1 — Rocket Launch Theme</h3>
+    <div class="fb-form">
+      <div class="fb-row"><label>First Name</label><input type="text" id="fb1-first" placeholder="First name"></div>
+      <div class="fb-row"><label>Middle Name</label><input type="text" id="fb1-mid" placeholder="Middle name"></div>
+      <div class="fb-row"><label>Last Name</label><input type="text" id="fb1-last" placeholder="Last name"></div>
+      <button class="btn" onclick="runFB1()">🚀 Launch FizzBuzz!</button>
     </div>
+    <div id="fb1-greeting" class="fb-greeting"></div>
+    <div id="fb1-out"></div>
+  </div>
 
-    <div class="w3-row w3-center w3-dark-grey w3-padding-16">
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">14+</span><br />
-        Partners
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">55+</span><br />
-        Projects Done
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">89+</span><br />
-        Happy Clients
-      </div>
-      <div class="w3-quarter w3-section">
-        <span class="w3-xlarge">150+</span><br />
-        Meetings
-      </div>
+  <!-- FB2 -->
+  <div class="fb-panel" id="fb-panel-2">
+    <h3>FizzBuzz 2 — Enhanced Modular Version</h3>
+    <div class="fb-form">
+      <div class="fb-row"><label>First Divisor (Fizz)</label><input type="number" id="fb2-d1" value="3" min="1"></div>
+      <div class="fb-row"><label>Second Divisor (Buzz)</label><input type="number" id="fb2-d2" value="5" min="1"></div>
+      <div class="fb-row"><label>Count to</label><input type="number" id="fb2-max" value="100" min="1" max="1000"></div>
+      <button class="btn" onclick="runFB2()">Generate FizzBuzz</button>
     </div>
+    <div id="fb2-out" class="fb-output fb-output-inline" style="display:none"></div>
+  </div>
 
-    <!-- Second Parallax Image with Portfolio Text -->
-    <div class="bgimg-2 w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">PORTFOLIO</span>
-      </div>
+  <!-- FB3 -->
+  <div class="fb-panel" id="fb-panel-3">
+    <h3>FizzBuzz 3 — Fizz, Buzz, BANG!</h3>
+    <div class="fb-form">
+      <div class="fb-row"><label>First Name</label><input type="text" id="fb3-first" placeholder="First name"></div>
+      <div class="fb-row"><label>Middle Name</label><input type="text" id="fb3-mid" placeholder="Middle name"></div>
+      <div class="fb-row"><label>Last Name</label><input type="text" id="fb3-last" placeholder="Last name"></div>
+      <div class="fb-row"><label>First Divisor (Fizz)</label><input type="number" id="fb3-d1" value="3" min="1"></div>
+      <div class="fb-row"><label>Second Divisor (Buzz)</label><input type="number" id="fb3-d2" value="5" min="1"></div>
+      <div class="fb-row"><label>Third Divisor (Bang)</label><input type="number" id="fb3-d3" value="7" min="1"></div>
+      <div class="fb-row"><label>Count to</label><input type="number" id="fb3-max" value="140" min="1" max="1000"></div>
+      <button class="btn" onclick="runFB3()">Generate FizzBuzz!</button>
     </div>
+    <div id="fb3-greeting" class="fb-greeting"></div>
+    <div id="fb3-out"></div>
+  </div>
 
-    <!-- Container (Portfolio Section) -->
-    <div class="w3-content w3-container w3-padding-64" id="portfolio">
-      <h3 class="w3-center">MY WORK</h3>
-      <p class="w3-center">
-        <em
-          >Here are some of my latest lorem work ipsum tipsum.<br />
-          Click on the images to make them bigger</em
-        >
-      </p>
-      <br />
-
-      <!-- Responsive Grid. Four columns on tablets, laptops and desktops. Will stack on mobile devices/small screens (100% width) -->
-      <div class="w3-row-padding w3-center">
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p1.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="The mist over the mountains"
-          />
-        </div>
-
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p2.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="Coffee beans"
-          />
-        </div>
-
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p3.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="Bear closeup"
-          />
-        </div>
-
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p4.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="Quiet ocean"
-          />
-        </div>
-      </div>
-
-      <div class="w3-row-padding w3-center w3-section">
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p5.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="The mist"
-          />
-        </div>
-
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p6.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="My beloved typewriter"
-          />
-        </div>
-
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p7.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="Empty ghost train"
-          />
-        </div>
-
-        <div class="w3-col m3">
-          <img
-            src="/w3images/p8.jpg"
-            style="width: 100%"
-            onclick="onClick(this)"
-            class="w3-hover-opacity"
-            alt="Sailing"
-          />
-        </div>
-        <button
-          class="w3-button w3-padding-large w3-light-grey"
-          style="margin-top: 64px"
-        >
-          LOAD MORE
-        </button>
-      </div>
+  <!-- FB4 -->
+  <div class="fb-panel" id="fb-panel-4">
+    <h3>FizzBuzz 4 — Custom Divisibility Engine</h3>
+    <p style="color:var(--mid);font-size:.9rem;margin-bottom:16px">Customize all three divisors, their output words, and the default value!</p>
+    <div class="fb-form">
+      <div class="fb-row"><label>First Name</label><input type="text" id="fb4-first" placeholder="First name"></div>
+      <div class="fb-row"><label>Middle Name</label><input type="text" id="fb4-mid" placeholder="Middle name"></div>
+      <div class="fb-row"><label>Last Name</label><input type="text" id="fb4-last" placeholder="Last name"></div>
+      <div class="fb-row"><label>First Divisor</label><input type="number" id="fb4-d1" value="3" min="1"></div>
+      <div class="fb-row"><label>First Word</label><input type="text" id="fb4-w1" value="Exploration"></div>
+      <div class="fb-row"><label>Second Divisor</label><input type="number" id="fb4-d2" value="5" min="1"></div>
+      <div class="fb-row"><label>Second Word</label><input type="text" id="fb4-w2" value="Level-Up"></div>
+      <div class="fb-row"><label>Third Divisor</label><input type="number" id="fb4-d3" value="7" min="1"></div>
+      <div class="fb-row"><label>Third Word</label><input type="text" id="fb4-w3" value="BANG!"></div>
+      <div class="fb-row"><label>Default Value (blank for nothing)</label><input type="text" id="fb4-def" value="" placeholder="Leave blank for empty"></div>
+      <div class="fb-row"><label>Count to (max 1000)</label><input type="number" id="fb4-max" value="125" min="1" max="1000"></div>
+      <button class="btn" onclick="runFB4()">Generate FizzBuzz!</button>
     </div>
+    <div id="fb4-greeting" class="fb-greeting"></div>
+    <div id="fb4-out"></div>
+  </div>
+</section>
 
-    <!-- Modal for full size images on click-->
-    <div
-      id="modal01"
-      class="w3-modal w3-black"
-      onclick="this.style.display='none'"
-    >
-      <span
-        class="w3-button w3-large w3-black w3-display-topright"
-        title="Close Modal Image"
-        ><i class="fa fa-remove"></i
-      ></span>
-      <div
-        class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64"
-      >
-        <img id="img01" class="w3-image" />
-        <p id="caption" class="w3-opacity w3-large"></p>
-      </div>
-    </div>
+<!-- ══ INTRO FORM ══ -->
+<section id="introform">
+  <h2>Introduction Form</h2>
+  <p style="margin-bottom:20px;color:var(--mid)">Fields marked * are required.</p>
+  <div class="iform">
+    <div class="fb-row"><label>First Name *</label><input type="text" id="if-first" value="Ethan" required></div>
+    <div class="fb-row"><label>Middle Initial</label><input type="text" id="if-mid" maxlength="2"></div>
+    <div class="fb-row"><label>Last Name *</label><input type="text" id="if-last" value="Perez" required></div>
+    <div class="fb-row"><label>Personal Background *</label><textarea id="if-personal" rows="3">I am Puerto Rican but born here in NC. I have one older brother and a cousin that I've grown up with, so she is like a sister to me. I am also the youngest of my entire extended family at 16 years old.</textarea></div>
+    <div class="fb-row"><label>Professional Background *</label><textarea id="if-professional" rows="3">I have never had a professional job as I am still under the required ages for most jobs.</textarea></div>
+    <div class="fb-row"><label>Academic Background *</label><textarea id="if-academic" rows="3">I am majoring in Full Stack Programming and am on my second to last semester!</textarea></div>
+    <div class="fb-row"><label>Primary Computer Platform *</label><input type="text" id="if-computer" value="I use a PC that I built with Windows 11 installed."></div>
+    <div class="fb-row"><label>Course 1 *</label><input type="text" id="if-c0" value="ENG111 – Writing and Inquiry: This is a required course for my AAS degree."></div>
+    <div class="fb-row"><label>Course 2 *</label><input type="text" id="if-c1" value="WEB250 – Database Driven Websites: This is a major requirement for my degree. This course will teach me about PHP and NodeJS among other back-end development programs."></div>
+    <div class="fb-row"><label>Course 3 *</label><input type="text" id="if-c2" value="WEB115 – Web Markup and Scripting: This is a major requirement for my degree. This course will teach me about front-end development like JavaScript, HTML, etc."></div>
+    <div class="fb-row"><label>Hobbies &amp; Interests *</label><textarea id="if-hobbies" rows="2">I like cars, video games, and sports.</textarea></div>
+    <div class="fb-row"><label>Favorite Quote *</label><input type="text" id="if-quote" value="There is no elevator to success. You have to take the stairs."></div>
+    <div class="fb-row"><label>Quote Author *</label><input type="text" id="if-author" value="Zig Ziglar"></div>
+    <div class="fb-row"><label>Email Address</label><input type="email" id="if-email" placeholder="you@example.com"></div>
+    <div class="fb-row"><label>GitHub URL</label><input type="url" id="if-github" placeholder="https://github.com/yourusername"></div>
+    <div class="fb-row"><label>LinkedIn URL</label><input type="url" id="if-linkedin" placeholder="https://linkedin.com/in/yourprofile"></div>
+    <div class="fb-row"><label>Portfolio / GitHub Pages URL</label><input type="url" id="if-portfolio" placeholder="https://yourusername.github.io"></div>
+    <button class="btn" onclick="submitIntroForm()">Submit</button>
+  </div>
 
-    <!-- Third Parallax Image with Portfolio Text -->
-    <div class="bgimg-3 w3-display-container w3-opacity-min">
-      <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
-      </div>
-    </div>
+  <div id="if-output">
+    <h2 id="if-out-name"></h2>
+    <p style="color:var(--mid);font-style:italic">Enthusiastic Penguin</p>
+    <h3>Personal Background:</h3><p id="if-out-personal"></p>
+    <h3>Professional Background:</h3><p id="if-out-professional"></p>
+    <h3>Academic Background:</h3><p id="if-out-academic"></p>
+    <h3>Primary Computer Platform:</h3><p id="if-out-computer"></p>
+    <h3>Courses I'm Taking &amp; Why:</h3><ul id="if-out-courses"></ul>
+    <h3>Hobbies &amp; Interests:</h3><p id="if-out-hobbies"></p>
+    <h3>Contact &amp; Links:</h3><ul id="if-out-links"></ul>
+    <blockquote><p id="if-out-quote"></p><cite id="if-out-author"></cite></blockquote>
+  </div>
+</section>
 
-    <!-- Container (Contact Section) -->
-    <div class="w3-content w3-container w3-padding-64" id="contact">
-      <h3 class="w3-center">WHERE I WORK</h3>
-      <p class="w3-center"><em>I'd love your feedback!</em></p>
+<footer>
+  <p>Ethan Perez's Enthusiastic Penguin &mdash; WEB115 Web Markup &amp; Scripting &mdash; Spring 2026</p>
+  <p style="margin-top:6px">Instructor: Aastha Saxena</p>
+</footer>
 
-      <div class="w3-row w3-padding-32 w3-section">
-        <div class="w3-col m4 w3-container">
-          <img
-            src="/w3images/map.jpg"
-            class="w3-image w3-round"
-            style="width: 100%"
-          />
-        </div>
-        <div class="w3-col m8 w3-panel">
-          <div class="w3-large w3-margin-bottom">
-            <i
-              class="fa fa-map-marker fa-fw w3-hover-text-black w3-xlarge w3-margin-right"
-            ></i>
-            Chicago, US<br />
-            <i
-              class="fa fa-phone fa-fw w3-hover-text-black w3-xlarge w3-margin-right"
-            ></i>
-            Phone: +00 151515<br />
-            <i
-              class="fa fa-envelope fa-fw w3-hover-text-black w3-xlarge w3-margin-right"
-            ></i>
-            Email: mail@mail.com<br />
-          </div>
-          <p>
-            Swing by for a cup of <i class="fa fa-coffee"></i>, or leave me a
-            note:
-          </p>
-          <form action="/action_page.php" target="_blank">
-            <div class="w3-row-padding" style="margin: 0 -16px 8px -16px">
-              <div class="w3-half">
-                <input
-                  class="w3-input w3-border"
-                  type="text"
-                  placeholder="Name"
-                  required
-                  name="Name"
-                />
-              </div>
-              <div class="w3-half">
-                <input
-                  class="w3-input w3-border"
-                  type="text"
-                  placeholder="Email"
-                  required
-                  name="Email"
-                />
-              </div>
-            </div>
-            <input
-              class="w3-input w3-border"
-              type="text"
-              placeholder="Message"
-              required
-              name="Message"
-            />
-            <button
-              class="w3-button w3-black w3-right w3-section"
-              type="submit"
-            >
-              <i class="fa fa-paper-plane"></i> SEND MESSAGE
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+<script>
+// ── TAB SWITCHING ──
+function showFB(n) {
+  document.querySelectorAll('.fb-panel').forEach((p,i) => p.classList.toggle('active', i===n));
+  document.querySelectorAll('.fb-tab').forEach((t,i) => t.classList.toggle('active', i===n));
+}
 
-    <!-- Footer -->
-    <footer
-      class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off"
-    >
-      <a href="#home" class="w3-button w3-light-grey"
-        ><i class="fa fa-arrow-up w3-margin-right"></i>To the top</a
-      >
-      <div class="w3-xlarge w3-section">
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-      </div>
-      <p>
-        Powered by
-        <a
-          href="https://www.w3schools.com/w3css/default.asp"
-          title="W3.CSS"
-          target="_blank"
-          class="w3-hover-text-green"
-          >w3.css</a
-        >
-      </p>
-    </footer>
+// ── FB0 ──
+function runFB0() {
+  let first = document.getElementById('fb0-first').value.trim();
+  let mid   = document.getElementById('fb0-mid').value.trim();
+  let last  = document.getElementById('fb0-last').value.trim();
+  if (!first) { alert('First name is required.'); return; }
+  let fullName = first + (mid ? ' ' + mid + '.' : '') + (last ? ' ' + last : '');
+  let count = prompt(`How high do you want to count, ${first}?`);
+  if (count === null || count.trim() === '') { alert('No number entered.'); return; }
+  count = parseInt(count);
+  if (isNaN(count) || count <= 0) { alert('Please enter a valid positive number.'); return; }
+  let out = document.getElementById('fb0-out');
+  let ol = document.createElement('ol');
+  for (let i = 1; i <= count; i++) {
+    let li = document.createElement('li');
+    li.textContent = `Enthusiastic Penguin - the number is ${i % 2 === 0 ? 'even' : 'odd'}`;
+    ol.appendChild(li);
+  }
+  out.innerHTML = `<p class="fb-greeting">Welcome to Ethan's Enthusiastic Penguin, ${fullName}!</p>`;
+  let wrapper = document.createElement('div');
+  wrapper.className = 'fb-output';
+  wrapper.appendChild(ol);
+  out.appendChild(wrapper);
+}
 
-    <script>
-      // Modal Image Gallery
-      function onClick(element) {
-        document.getElementById("img01").src = element.src;
-        document.getElementById("modal01").style.display = "block";
-        var captionText = document.getElementById("caption");
-        captionText.innerHTML = element.alt;
+// ── FB1 ──
+function runFB1() {
+  let first = document.getElementById('fb1-first').value.trim();
+  let mid   = document.getElementById('fb1-mid').value.trim();
+  let last  = document.getElementById('fb1-last').value.trim();
+  if (!first || !mid || !last) { alert('Please enter your first, middle, and last name!'); return; }
+  document.getElementById('fb1-greeting').textContent = `Welcome to FizzBuzz, ${first} ${mid} ${last}!`;
+  let list = document.createElement('ol');
+  const cfg = { max:140, d1:3, d2:5, w1:'IGNITION', w2:'LIFTOFF', def:'countdown' };
+  for (let i = 1; i <= cfg.max; i++) {
+    let li = document.createElement('li');
+    let t = '';
+    if (i % cfg.d1 === 0 && i % cfg.d2 === 0) t = `${cfg.w1}! ${cfg.w2}!`;
+    else if (i % cfg.d1 === 0) t = `${cfg.w1}!`;
+    else if (i % cfg.d2 === 0) t = `${cfg.w2}!`;
+    else t = cfg.def;
+    li.textContent = t;
+    list.appendChild(li);
+  }
+  let out = document.getElementById('fb1-out');
+  out.innerHTML = '';
+  let wrapper = document.createElement('div');
+  wrapper.className = 'fb-output';
+  wrapper.appendChild(list);
+  out.appendChild(wrapper);
+}
+
+// ── FB2 ──
+function runFB2() {
+  let d1 = parseInt(document.getElementById('fb2-d1').value);
+  let d2 = parseInt(document.getElementById('fb2-d2').value);
+  let max = parseInt(document.getElementById('fb2-max').value);
+  if (d1 < 1 || d2 < 1 || max < 1) { alert('Please enter positive numbers.'); return; }
+  if (max > 1000) { alert('Max 1000.'); return; }
+  let out = document.getElementById('fb2-out');
+  out.innerHTML = '';
+  for (let i = 1; i <= max; i++) {
+    let div = document.createElement('div');
+    if (i % d1 === 0 && i % d2 === 0) div.textContent = 'FizzBuzz';
+    else if (i % d1 === 0) div.textContent = 'Fizz';
+    else if (i % d2 === 0) div.textContent = 'Buzz';
+    else div.textContent = i;
+    out.appendChild(div);
+  }
+  out.style.display = 'block';
+}
+
+// ── FB3 ──
+function runFB3() {
+  let first = document.getElementById('fb3-first').value.trim();
+  let mid   = document.getElementById('fb3-mid').value.trim();
+  let last  = document.getElementById('fb3-last').value.trim();
+  if (!first || !mid || !last) { alert('Please enter your first, middle, and last name!'); return; }
+  let d1 = parseInt(document.getElementById('fb3-d1').value);
+  let d2 = parseInt(document.getElementById('fb3-d2').value);
+  let d3 = parseInt(document.getElementById('fb3-d3').value);
+  let max = parseInt(document.getElementById('fb3-max').value);
+  if (d1<1||d2<1||d3<1||max<1) { alert('Please enter positive numbers.'); return; }
+  if (max>1000) { alert('Max 1000.'); return; }
+  document.getElementById('fb3-greeting').textContent = `Welcome to FizzBuzz, ${first} ${mid} ${last}!`;
+  let list = document.createElement('ol');
+  const dw = [{d:d1,w:'Fizz'},{d:d2,w:'Buzz'},{d:d3,w:'Bang'}];
+  for (let i = 1; i <= max; i++) {
+    let li = document.createElement('li');
+    let output = dw.filter(x => i % x.d === 0).map(x => x.w).join('');
+    li.textContent = output || i;
+    list.appendChild(li);
+  }
+  let out = document.getElementById('fb3-out');
+  out.innerHTML = '';
+  let wrapper = document.createElement('div');
+  wrapper.className = 'fb-output';
+  wrapper.appendChild(list);
+  out.appendChild(wrapper);
+}
+
+// ── FB4 ──
+function runFB4() {
+  let first = document.getElementById('fb4-first').value.trim();
+  let mid   = document.getElementById('fb4-mid').value.trim();
+  let last  = document.getElementById('fb4-last').value.trim();
+  if (!first || !mid || !last) { alert('Please enter your first, middle, and last name!'); return; }
+  let d1 = parseInt(document.getElementById('fb4-d1').value);
+  let w1 = document.getElementById('fb4-w1').value.trim();
+  let d2 = parseInt(document.getElementById('fb4-d2').value);
+  let w2 = document.getElementById('fb4-w2').value.trim();
+  let d3 = parseInt(document.getElementById('fb4-d3').value);
+  let w3 = document.getElementById('fb4-w3').value.trim();
+  let def = document.getElementById('fb4-def').value.trim();
+  let max = parseInt(document.getElementById('fb4-max').value);
+  if (d1<1||d2<1||d3<1||max<1) { alert('Please enter positive numbers.'); return; }
+  if (max>1000) { alert('Max 1000.'); return; }
+  if (!w1||!w2||!w3) { alert('Please enter a word for each divisor.'); return; }
+  if (w1.includes(' ')||w2.includes(' ')||w3.includes(' ')) { alert('One word per field (no spaces).'); return; }
+  document.getElementById('fb4-greeting').textContent = `Welcome to Custom FizzBuzz, ${first} ${mid} ${last}!`;
+  let list = document.createElement('ol');
+  const dw = [{d:d1,w:w1},{d:d2,w:w2},{d:d3,w:w3}];
+  for (let i = 1; i <= max; i++) {
+    let li = document.createElement('li');
+    let parts = dw.filter(x => i % x.d === 0).map(x => x.w);
+    li.textContent = parts.length ? parts.join(', ') : (def || '');
+    list.appendChild(li);
+  }
+  let out = document.getElementById('fb4-out');
+  out.innerHTML = '';
+  let wrapper = document.createElement('div');
+  wrapper.className = 'fb-output';
+  wrapper.appendChild(list);
+  out.appendChild(wrapper);
+}
+
+// ── INTRO FORM ──
+function submitIntroForm() {
+  const g = id => document.getElementById(id).value.trim();
+  let req = ['if-first','if-last','if-personal','if-professional','if-academic','if-computer','if-c0','if-c1','if-c2','if-hobbies','if-quote','if-author'];
+  for (let id of req) {
+    if (!g(id)) { alert('Please fill in all required fields.'); document.getElementById(id).focus(); return; }
+  }
+  let first = g('if-first'), mid = g('if-mid'), last = g('if-last');
+  let fullName = first + (mid ? ' ' + mid + '.' : '') + ' ' + last;
+  document.getElementById('if-out-name').textContent = fullName;
+  document.getElementById('if-out-personal').textContent = g('if-personal');
+  document.getElementById('if-out-professional').textContent = g('if-professional');
+  document.getElementById('if-out-academic').textContent = g('if-academic');
+  document.getElementById('if-out-computer').textContent = g('if-computer');
+  document.getElementById('if-out-hobbies').textContent = g('if-hobbies');
+  document.getElementById('if-out-quote').textContent = '"' + g('if-quote') + '"';
+  document.getElementById('if-out-author').textContent = '– ' + g('if-author');
+
+  let courseUl = document.getElementById('if-out-courses');
+  courseUl.innerHTML = '';
+  [g('if-c0'), g('if-c1'), g('if-c2')].filter(Boolean).forEach(c => {
+    let ci = c.indexOf(':');
+    let li = document.createElement('li');
+    if (ci !== -1) {
+      let name = c.substring(0,ci).trim();
+      let reason = c.substring(ci+1).trim();
+      li.textContent = name;
+      if (reason) {
+        let ul = document.createElement('ul');
+        let sli = document.createElement('li');
+        sli.textContent = reason;
+        ul.appendChild(sli);
+        li.appendChild(ul);
       }
+    } else { li.textContent = c; }
+    courseUl.appendChild(li);
+  });
 
-      // Change style of navbar on scroll
-      window.onscroll = function () {
-        myFunction();
-      };
-      function myFunction() {
-        var navbar = document.getElementById("myNavbar");
-        if (
-          document.body.scrollTop > 100 ||
-          document.documentElement.scrollTop > 100
-        ) {
-          navbar.className =
-            "w3-bar" + " w3-card" + " w3-animate-top" + " w3-white";
-        } else {
-          navbar.className = navbar.className.replace(
-            " w3-card w3-animate-top w3-white",
-            ""
-          );
-        }
-      }
+  let linksUl = document.getElementById('if-out-links');
+  linksUl.innerHTML = '';
+  [{l:'Email',v:g('if-email'),h:'mailto:'+g('if-email')},{l:'GitHub',v:g('if-github'),h:g('if-github')},
+   {l:'LinkedIn',v:g('if-linkedin'),h:g('if-linkedin')},{l:'Portfolio',v:g('if-portfolio'),h:g('if-portfolio')}
+  ].forEach(x => {
+    if (x.v) {
+      let li = document.createElement('li');
+      let a = document.createElement('a');
+      a.textContent = x.l; a.href = x.h; a.target='_blank'; a.rel='noopener noreferrer';
+      li.appendChild(a); linksUl.appendChild(li);
+    }
+  });
+  if (!linksUl.children.length) {
+    let li = document.createElement('li'); li.textContent = 'No contact links provided.'; linksUl.appendChild(li);
+  }
 
-      // Used to toggle the menu on small screens when clicking on the menu button
-      function toggleFunction() {
-        var x = document.getElementById("navDemo");
-        if (x.className.indexOf("w3-show") == -1) {
-          x.className += " w3-show";
-        } else {
-          x.className = x.className.replace(" w3-show", "");
-        }
-      }
-    </script>
-  </body>
+  let output = document.getElementById('if-output');
+  output.style.display = 'block';
+  output.scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+</body>
 </html>
