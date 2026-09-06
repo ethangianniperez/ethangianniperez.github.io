@@ -19,51 +19,59 @@
         <h3>Question 1</h3>
         <p>What does CPU stand for?</p>
         <ul>
-            <li><button>Central Processing Unit</button></li>
-            <li><button>Computer Personal Unit</button></li>
-            <li><button>Central Program Utility</button></li>
-            <li><button>Computer Processing User</button></li>
+            <li><button onclick="checkAnswer(true)">Central Processing Unit</button></li>
+            <li><button onclick="checkAnswer(false)">Computer Personal Unit</button></li>
+            <li><button onclick="checkAnswer(false)">Central Program Utility</button></li>
+            <li><button onclick="checkAnswer(false)">Computer Processing User</button></li>
         </ul>
 
         <h3>Question 2</h3>
         <p>Which company created the iPhone?</p>
         <ul>
-            <li><button>Microsoft</button></li>
-            <li><button>Apple</button></li>
-            <li><button>Google</button></li>
-            <li><button>Samsung</button></li>
+            <li><button onclick="checkAnswer(false)">Microsoft</button></li>
+            <li><button onclick="checkAnswer(true)">Apple</button></li>
+            <li><button onclick="checkAnswer(false)">Google</button></li>
+            <li><button onclick="checkAnswer(false)">Samsung</button></li>
         </ul>
 
         <h3>Question 3</h3>
         <p>Which language is used to structure webpages?</p>
         <ul>
-            <li><button>Python</button></li>
-            <li><button>Java</button></li>
-            <li><button>HTML</button></li>
-            <li><button>C++</button></li>
+            <li><button onclick="checkAnswer(false)">Python</button></li>
+            <li><button onclick="checkAnswer(false)">Java</button></li>
+            <li><button onclick="checkAnswer(true)">HTML</button></li>
+            <li><button onclick="checkAnswer(false)">C++</button></li>
         </ul>
 
         <h3>Question 4</h3>
         <p>What does Wi-Fi allow devices to do?</p>
         <ul>
-            <li><button>Connect to a wireless network</button></li>
-            <li><button>Print without electricity</button></li>
-            <li><button>Increase screen size</button></li>
-            <li><button>Charge a battery</button></li>
+            <li><button onclick="checkAnswer(true)">Connect to a wireless network</button></li>
+            <li><button onclick="checkAnswer(false)">Print without electricity</button></li>
+            <li><button onclick="checkAnswer(false)">Increase screen size</button></li>
+            <li><button onclick="checkAnswer(false)">Charge a battery</button></li>
         </ul>
 
         <h3>Question 5</h3>
         <p>Which device is commonly used to store files?</p>
         <ul>
-            <li><button>Keyboard</button></li>
-            <li><button>Monitor</button></li>
-            <li><button>Hard drive</button></li>
-            <li><button>Mouse</button></li>
+            <li><button onclick="checkAnswer(false)">Keyboard</button></li>
+            <li><button onclick="checkAnswer(false)">Monitor</button></li>
+            <li><button onclick="checkAnswer(true)">Hard drive</button></li>
+            <li><button onclick="checkAnswer(false)">Mouse</button></li>
         </ul>
+
+        <p id="feedback"></p>
+
+        <button id="scoreButton">Show My Score</button>
+
+        <p id="score"></p>
 
         <h2>Quiz Complete!</h2>
         <p>Thanks for taking the Technology Quiz.</p>
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
