@@ -279,15 +279,65 @@ p {
     transform: translateY(-5px);
 }
 
+
+/* ================================
+   ICON STYLING
+================================ */
+
+/* Technique 1: Change icon size */
 .feature-icon {
     font-size: 2.5rem;
+
+    /* Technique 2: Change icon color */
     color: #8a4fff;
 
     margin-bottom: 1rem;
     padding: 1rem;
 
+    /* Technique 3: Border and background styling */
     border: 2px solid #8a4fff;
     border-radius: 50%;
+    background-color: #f3edff;
+
+    /* Technique 4: Hover/transform effect */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.feature-icon:hover {
+    transform: scale(1.15);
+    color: #f4b942;
+}
+
+
+/* Additional icon styling */
+
+.logo i {
+    color: #f4b942;
+}
+
+.nav-links i {
+    color: #8a4fff;
+}
+
+.button i {
+    color: inherit;
+}
+
+.image-project h3 i {
+    color: #8a4fff;
+}
+
+.contact-links i {
+    color: #8a4fff;
+}
+
+.social-links i {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-links a:hover i {
+    transform: scale(1.2);
+    color: #f4b942;
 }
 
 
